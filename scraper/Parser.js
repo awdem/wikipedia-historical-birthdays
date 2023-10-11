@@ -10,10 +10,14 @@ class Parser {
 			const bdayLiElement = $(elem)
 			const linkElements = bdayLiElement.find('a');
 
-			const name = this.parseName(linkElements);
+			const nameElement =  this.findNameElement(linkElements);
+
+			const name = $(nameElement).attr('title');
+			const wikiUrl = "https://en.wikipedia.org" + $(nameElement).attr('href');
 
 			const record = {
-				name: name,
+				name: name,	
+				wikiUrl: wikiUrl,
 			}
 
 			parsedData.push(record)
@@ -22,19 +26,11 @@ class Parser {
 		return parsedData;
 	}
 
-	parseName(linkElements) {
+	findNameElement(linkElements) {
 		const firstLiElem = linkElements.eq(0);
 		const secondLiElem = linkElements.eq(1);
 
-		let name; 
-
-		if ( this.startsWithDigit(firstLiElem.attr('title')) ) {
-			name = secondLiElem.attr('title');
-		} else {
-			name = firstLiElem.attr('title');
-		}
-
-		return name;
+		return this.startsWithDigit(firstLiElem.attr('title')) ? secondLiElem : firstLiElem
 	}
 
 	startsWithDigit(str) {

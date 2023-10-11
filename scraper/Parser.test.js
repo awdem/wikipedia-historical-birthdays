@@ -30,7 +30,7 @@ describe('Parser', () => {
 
 	it('returns an array of record objects with the wiki url for each bday haver', () => {
 		expect(parser.parse($)[0].wikiUrl).toEqual('https://en.wikipedia.org/wiki/Ali_al-Ridha')
-		expect(parser.parse($)[4].wikiUrl).toEqual('https://en.wikipedia.org/wiki/Hans_von_Dohnanyi')
+		expect(parser.parse($)[4].wikiUrl).toEqual('https://en.wikipedia.org/wiki/Hans_von_Dohn%C3%A1nyi')
 	})
 
 	it('returns an array of record objects with the bday date for each bday haver', () => {
