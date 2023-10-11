@@ -8,18 +8,9 @@ class Parser {
 		
 		bdayLiElements.each((i, elem) => {
 			const bdayLiElement = $(elem)
-
 			const linkElements = bdayLiElement.find('a');
-			const firstLiElem = linkElements.eq(0);
-			const secondLiElem = linkElements.eq(1);
 
-			let name;
-
-			if ( this.startsWithDigit(firstLiElem.attr('title')) ) {
-				name = secondLiElem.attr('title');
-			} else {
-				name = firstLiElem.attr('title');
-			}
+			const name = this.parseName(linkElements);
 
 			const record = {
 				name: name,
@@ -31,11 +22,25 @@ class Parser {
 		return parsedData;
 	}
 
+	parseName(linkElements) {
+		const firstLiElem = linkElements.eq(0);
+		const secondLiElem = linkElements.eq(1);
+
+		let name; 
+
+		if ( this.startsWithDigit(firstLiElem.attr('title')) ) {
+			name = secondLiElem.attr('title');
+		} else {
+			name = firstLiElem.attr('title');
+		}
+
+		return name;
+	}
+
 	startsWithDigit(str) {
 		return /^\d/.test(str)
 	}
 
 }
-
 
 module.exports = Parser;
