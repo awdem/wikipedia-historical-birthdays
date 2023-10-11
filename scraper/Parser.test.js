@@ -28,4 +28,14 @@ describe('Parser', () => {
 		expect(parser.parse($)[4].name).toEqual('Hans von Dohnányi')
 	})
 
+	it('returns an array of record objects with the wiki url for each bday haver', () => {
+		expect(parser.parse($)[0].wikiUrl).toEqual('https://en.wikipedia.org/wiki/Ali_al-Ridha')
+		expect(parser.parse($)[4].wikiUrl).toEqual('https://en.wikipedia.org/wiki/Hans_von_Dohnanyi')
+	})
+
+	it('returns an array of record objects with the bday date for each bday haver', () => {
+		expect(parser.parse($)[0].bday).toEqual('01/01/766')
+		expect(parser.parse($)[4].bday).toEqual('01/01/1902')
+	})
+
 })
