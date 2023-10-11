@@ -4,10 +4,13 @@ class Parser {
 		const bdayLists = birthsHeadline.nextAll('ul').slice(0, 3)
 		const bdayLiElements = bdayLists.find('li')
 
-		bdayLiElements.each((i, elem) => {
-			const bday = $(elem)
-			console.log(bday.text())
-		})
+
+		return bdayLiElements.length
+		
+		// bdayLiElements.each((i, elem) => {
+		// 	const bday = $(elem)
+		// 	console.log(bday.text())
+		// })
 	}
 }
 
