@@ -6,16 +6,6 @@ const exp = require('constants');
 const html = fs.readFileSync('./test.html', 'utf8');
 const $ = load(html);
 
-
-
-const expectedData = [
-	{ name: 'Ali al-Ridha' },
-	{ name: 'Kristijonas Donelaitis' }, 
-	{ name: 'Paul Revere' },
-	{ name: 'Buster Nupen' },
-	{ name: 'Hans von Dohnányi' }
-	]
-
 describe('Parser', () => {
 	let parser;
 
