@@ -1,17 +1,40 @@
 class Parser {
 	parse($) {
+		const parsedData = [];
+
 		const birthsHeadline = $('h2:contains("Births")')
 		const bdayLists = birthsHeadline.nextAll('ul').slice(0, 3)
 		const bdayLiElements = bdayLists.find('li')
-
-
-		return bdayLiElements.length
 		
-		// bdayLiElements.each((i, elem) => {
-		// 	const bday = $(elem)
-		// 	console.log(bday.text())
-		// })
+		bdayLiElements.each((i, elem) => {
+			const bdayLiElement = $(elem)
+
+			const linkElements = bdayLiElement.find('a');
+			const firstLiElem = linkElements.eq(0);
+			const secondLiElem = linkElements.eq(1);
+
+			let name;
+
+			if ( this.startsWithDigit(firstLiElem.attr('title')) ) {
+				name = secondLiElem.attr('title');
+			} else {
+				name = firstLiElem.attr('title');
+			}
+
+			const record = {
+				name: name,
+			}
+
+			parsedData.push(record)
+		})
+
+		return parsedData;
 	}
+
+	startsWithDigit(str) {
+		return /^\d/.test(str)
+	}
+
 }
 
 

@@ -1,18 +1,31 @@
 const { load } = require('cheerio');
 const Parser = require('./Parser');
 const fs = require('fs');
+const exp = require('constants');
 
 const html = fs.readFileSync('./test.html', 'utf8');
 const $ = load(html);
 
 
 
+const expectedData = [
+	{ name: 'Ali al-Ridha' },
+	{ name: 'Kristijonas Donelaitis' }, 
+	{ name: 'Paul Revere' },
+	{ name: 'Buster Nupen' },
+	{ name: 'Hans von Dohnányi' }
+	]
 
 describe('Parser', () => {
-	xit('parses the test_html', () => {
+	let parser;
+
+	beforeEach(() => {
 		parser = new Parser;
-		expect(parser.parse($)).toEqual(219);
 	})
 
-	
+	it('returns an array of record objects with the names of the bday havers', () => {
+		expect(parser.parse($)[0].name).toEqual('Ali al-Ridha')
+		expect(parser.parse($)[4].name).toEqual('Hans von Dohnányi')
+	})
+
 })
