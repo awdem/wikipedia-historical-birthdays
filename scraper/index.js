@@ -1,9 +1,10 @@
-const Scraper = require('./Scraper')
-const saveToDatabase = require('./saveToDatabase')
+const Scraper = require('./Scraper');
+const Database = require('./Database');
 
 start_url = 'https://en.wikipedia.org/wiki/January_1';
-data = [];
 
-scraper = new Scraper
+db = new Database
+db.connect();
 
-scraper.scrape(start_url)
+// scraper = new Scraper
+// scraper.scrape(start_url)
