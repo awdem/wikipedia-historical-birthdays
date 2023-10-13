@@ -18,7 +18,7 @@ class Parser {
 			const wikiUrl = "https://en.wikipedia.org" + nameElement.attr('href');
 
 			const day = pageTitleText.match(/\b\d{1,2}\b/)[0];
-			const month = this.monthNametoNumber(pageTitleText.match(/\w+/)[0]);
+			const month = this.turnMonthNametoNumber(pageTitleText.match(/\w+/)[0]);
 			const year = bdayLiElement.text().match(/\b\d{1,4}\b/)[0];
 
 			const record = {
