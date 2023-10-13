@@ -24,8 +24,8 @@ describe('Parser', () => {
 	})
 
 	it('returns an array of record objects with the bday date for each bday haver', () => {
-		expect(parser.parse($)[0].bday).toEqual('01/01/766')
-		expect(parser.parse($)[4].bday).toEqual('01/01/1902')
+		expect(parser.parse($)[0].bday).toEqual('0766-01-01')
+		expect(parser.parse($)[4].bday).toEqual('1902-01-01')
 	})
 
 })

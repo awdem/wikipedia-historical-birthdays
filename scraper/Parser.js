@@ -24,7 +24,7 @@ class Parser {
 			const record = {
 				name: name,	
 				wikiUrl: wikiUrl,
-				bday: `${day.padStart(2, '0')}/${month.padStart(2, '0')}/${year}`
+				bday: `${year.padStart(4, 0, '0')}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
 			}
 
 			parsedData.push(record)
