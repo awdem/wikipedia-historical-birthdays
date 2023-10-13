@@ -14,9 +14,7 @@ class Database {
 
 	async connect() {
 		try {
-			console.log('Connecting to database')
 			await this.db.connect()
-			console.log('Connection successful')
 		} catch (err) {
 			console.log('Error connecting to database', err);
 		}
@@ -28,13 +26,12 @@ class Database {
 				try {
 					const query = "INSERT INTO birthdays (bday, name, wiki_url) VALUES ($1, $2, $3)"
 					const result = await this.db.query(query, [record.bday, record.name, record.wikiUrl])
-					console.log(`Created record for ${record.name}`)
 				} catch (err) {
 					console.log(`Record creation failed: `, err)
 				}
 			};
 		};
 	}
-}	
+}
 
 module.exports = Database;
