@@ -1,13 +1,13 @@
+require('dotenv').config();
 const { Pool } = require("pg");
-const { connect_timeout } = require("pg/lib/defaults");
 
 class Database {
 	constructor() {
 		this.db = new Pool({
-			user: "temp",
+			user: '',
 			host: "localhost",
-			database: "temp",
-			password: "temp",
+			database: "wiki_birthdays_test",
+			password: '',
 			port: 5432,
 		})
 	}
@@ -20,6 +20,10 @@ class Database {
 		} catch (err) {
 			console.log('Error connecting to database', err);
 		}
+	}
+
+	async createRecords(data, res) {
+		// TODO
 	}
 }
 
