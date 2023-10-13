@@ -23,7 +23,7 @@ class Scraper {
 		const $ = load(respHTML);
 	
 		this.scrapedData.push(this.parser.parse($));
-	
+
 		let daysInMonth = $(`#mw-content-text > div.mw-parser-output > div.navbox > table > tbody > tr:nth-child(${this.month + 2}) > td > div > ul`).children('li').length
 		this.day += 1;
 	
@@ -36,7 +36,7 @@ class Scraper {
 			let nextHref = $(`#mw-content-text > div.mw-parser-output > div.navbox > table > tbody > tr:nth-child(${this.month + 2}) > td > div > ul > li:nth-child(${this.day}) > a`).attr('href');
 			let nextUrl = 'https://en.wikipedia.org' + nextHref
 			
-			console.log(nextUrl)
+			console.log("Now scraping: " + nextUrl)
 			await this.scrape(nextUrl)
 		}
 		
