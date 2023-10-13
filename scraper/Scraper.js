@@ -7,8 +7,8 @@ class Scraper {
 	constructor() {
 		this.parser = new Parser;
 		this.scrapedData = [];
-		this.day = 1
-		this.month = 1
+		this.day = 30
+		this.month = 12
 	};
 
 	delayRate(ms) {
@@ -32,19 +32,15 @@ class Scraper {
 			this.day = 1
 		}
 	
-		// console.log(this.day);
-		// console.log(this.month);
-	
 		if ( this.month < 13 ) {
 			let nextHref = $(`#mw-content-text > div.mw-parser-output > div.navbox > table > tbody > tr:nth-child(${this.month + 2}) > td > div > ul > li:nth-child(${this.day}) > a`).attr('href');
 			let nextUrl = 'https://en.wikipedia.org' + nextHref
 			
-			// console.log(nextUrl)
-			this.scrape(nextUrl)
-		} else {
-			console.log('scrape complete')
-			return
+			console.log(nextUrl)
+			await this.scrape(nextUrl)
 		}
+		
+		return this.scrapedData;
 	}
 }
 
