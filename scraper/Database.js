@@ -23,10 +23,18 @@ class Database {
 	}
 
 	async createRecords(data, res) {
-		// TODO
+		for (const day of data) {
+			for (const record of day) {
+				try {
+					const query = "INSERT INTO birthdays (bday, name, wiki_url) VALUES ($1, $2, $3)"
+					const result = await this.db.query(query, [record.bday, record.name, record.wikiUrl])
+					console.log(`Created record for ${record.name}`)
+				} catch (err) {
+					console.log(`Record creation failed: `, err)
+				}
+			};
+		};
 	}
-}
-
-
+}	
 
 module.exports = Database;
