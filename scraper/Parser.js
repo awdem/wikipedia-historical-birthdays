@@ -12,11 +12,15 @@ class Parser {
 			const bdayLiElement = $(elem)
 			const linkElements = bdayLiElement.find('a');
 
+			// guard clause in case the li element is not a birthday
+			if (!linkElements.attr('title')) {
+        return; // Skip this element and continue to the next iteration
+      }
+
 			const nameElement =  $(this.findNameElement(linkElements));
 
 			const name = nameElement.attr('title');
 			const wikiUrl = "https://en.wikipedia.org" + nameElement.attr('href');
-
 			const day = pageTitleText.match(/\b\d{1,2}\b/)[0];
 			const month = this.turnMonthNametoNumber(pageTitleText.match(/\w+/)[0]);
 			const year = bdayLiElement.text().match(/\b\d{1,4}\b/)[0];
