@@ -24,8 +24,8 @@ class Database {
 		for (const day of data) {
 			for (const record of day) {
 				try {
-					const query = "INSERT INTO birthdays (bday, name, wiki_url) VALUES ($1, $2, $3)"
-					const result = await this.db.query(query, [record.bday, record.name, record.wikiUrl])
+					const query = "INSERT INTO birthdays (bday, name, wiki_url, bce) VALUES ($1, $2, $3, $4)"
+					const result = await this.db.query(query, [record.bday, record.name, record.wikiUrl, record.BCE])
 				} catch (err) {
 					console.log(`Record creation failed: `, err)
 				}
