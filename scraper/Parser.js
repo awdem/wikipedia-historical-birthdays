@@ -20,11 +20,13 @@ class Parser {
 			const day = pageTitleText.match(/\b\d{1,2}\b/)[0];
 			const month = this.turnMonthNametoNumber(pageTitleText.match(/\w+/)[0]);
 			const year = bdayLiElement.text().match(/\b\d{1,4}\b/)[0];
+			const BCE = bdayLiElement.text().match(/\b(BC)\b/);
 
 			const record = {
 				name: name,	
 				wikiUrl: wikiUrl,
-				bday: `${year.padStart(4, 0, '0')}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+				bday: `${year.padStart(4, 0, '0')}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`,
+				BCE: BCE !== null 
 			}
 
 			parsedData.push(record)
