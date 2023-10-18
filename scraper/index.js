@@ -3,18 +3,10 @@ const Database = require('./Database');
 
 
 const main = async () => {
-	const db = new Database
 	const scraper = new Scraper
-	start_url = 'https://en.wikipedia.org/wiki/January_1';
-	console.log('Connecting to database');
-	await db.connect();
-	console.log('Connection successful');
+	start_url = 'https://en.wikipedia.org/wiki/August_26';
 	console.log('beginning scrape...');
-	const data = await scraper.scrape(start_url);
-	console.log('scrape complete');
-	console.log('Inserting records into database...')
-	await db.createRecords(data);
-	console.log('Record creation complete')
+	await scraper.scrape(start_url);
 };
 
 main()
