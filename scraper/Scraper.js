@@ -15,6 +15,15 @@ class Scraper {
 	delayRate(ms) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
+
+	advanceTimeTrackers(daysInMonth) {
+		this.day += 1;
+	
+		if (this.day > daysInMonth) {
+			this.month += 1;
+			this.day = 1
+		}
+	}
 	
 	async scrape(url) {
 		console.log("Now scraping: " + url)
@@ -24,17 +33,12 @@ class Scraper {
 		let respHTML = resp.data;
 		const $ = load(respHTML);
 	
-		const scrapedData = this.parser.parse($)
+		const scrapedData = this.parser.parse($)	
 		await this.db.saveRecords(scrapedData);
 		console.log("Records saved for: " + url);
 
 		let daysInMonth = $(`#mw-content-text > div.mw-parser-output > div.navbox > table > tbody > tr:nth-child(${this.month + 2}) > td > div > ul`).children('li').length
-		this.day += 1;
-	
-		if (this.day > daysInMonth) {
-			this.month += 1;
-			this.day = 1
-		}
+		this.advanceTimeTrackers(daysInMonth)
 	
 		if ( this.month < 13 ) {
 			let nextHref = $(`#mw-content-text > div.mw-parser-output > div.navbox > table > tbody > tr:nth-child(${this.month + 2}) > td > div > ul > li:nth-child(${this.day}) > a`).attr('href');
