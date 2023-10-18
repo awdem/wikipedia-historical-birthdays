@@ -4,7 +4,7 @@ const Database = require('./Database');
 
 const main = async () => {
 	const scraper = new Scraper
-	start_url = 'https://en.wikipedia.org/wiki/August_26';
+	start_url = 'https://en.wikipedia.org/wiki/January_1';
 	console.log('beginning scrape...');
 	await scraper.scrape(start_url);
 };

@@ -8,8 +8,8 @@ class Scraper {
 	constructor() {
 		this.parser = new Parser;
 		this.db = new Database();
-		this.day = 26
-		this.month = 8
+		this.day = 1
+		this.month = 1
 	};
 
 	delayRate(ms) {
