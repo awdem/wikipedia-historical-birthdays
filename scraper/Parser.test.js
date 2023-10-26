@@ -33,4 +33,32 @@ describe('Parser', () => {
 		expect(parser.parse($)[1].BCE).toEqual(true)
 	})
 
+	xit('correctly handles bday list elements with two years', () => {
+		expect(parser.parse($)[3].name).toEqual('Eleanor of Navarre')
+		expect(parser.parse($)[3].wikiUrl).toEqual('https://en.wikipedia.org/wiki/Eleanor_of_Navarre')
+		expect(parser.parse($)[3].bday).toEqual('1425-01-01')
+		expect(parser.parse($)[3].BCE).toEqual(false)
+	})
+
+	xit('correctly handles year list elements that start with AD', () => {
+		expect(parser.parse($)[4].name).toEqual('Emperor Daizong of Tang')
+		expect(parser.parse($)[4].wikiUrl).toEqual('https://en.wikipedia.org/wiki/Emperor_Daizong_of_Tang')
+		expect(parser.parse($)[4].bday).toEqual('0727-01-01')
+		expect(parser.parse($)[4].BCE).toEqual(false)
+	})
+
+	xit('correctly handles year list elements that are followed by a citation', () => {
+		expect(parser.parse($)[5].name).toEqual('Malcolm IV of Scotland')
+		expect(parser.parse($)[5].wikiUrl).toEqual('https://en.wikipedia.org/wiki/Malcolm_IV_of_Scotland')
+		expect(parser.parse($)[5].bday).toEqual('1141-01-01')
+		expect(parser.parse($)[5].BCE).toEqual(false)
+	})
+
+		xit('correctly handles year list elements that are followed by a citation', () => {
+		expect(parser.parse($)[5].name).toEqual('Malcolm IV of Scotland')
+		expect(parser.parse($)[5].wikiUrl).toEqual('https://en.wikipedia.org/wiki/Malcolm_IV_of_Scotland')
+		expect(parser.parse($)[5].bday).toEqual('1141-01-01')
+		expect(parser.parse($)[5].BCE).toEqual(false)
+	})
+
 })
